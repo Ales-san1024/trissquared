@@ -1,0 +1,239 @@
+*,*::after,*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --board-size: 250px;
+    --cell-size: calc(var(--board-size)*.3);
+}
+
+body {
+    margin: 0;
+    background: #000;
+}
+.field {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+.field,.board,.cell {
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+        
+}
+.field, .board {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.board {
+    padding: calc(var(--board-size)*.05);
+    height: var(--board-size);
+    width: var(--board-size);
+}
+
+.cell {
+    height: var(--cell-size);
+    width: var(--cell-size);
+    align-items: center;
+    display: flex;
+}
+
+.board, .cell {
+    border: 1px solid #fff;
+}
+
+.board:first-child,
+.board:nth-child(2),
+.board:nth-child(3),
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.board:last-child,
+.board:nth-child(7),
+.board:nth-child(8),
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8) {
+    border-bottom: none;
+}
+
+.board:nth-child(3n+1),
+.cell:nth-child(3n+1) {
+    border-left: none;
+}
+
+.board:nth-child(3n),
+.cell:nth-child(3n) {
+    border-right: none;
+}
+
+.taken .cell {
+    border:#fff;
+}
+
+.cell.x::before,
+.cell.x::after,
+.field.x .board.curr .cell:not(.x):not(.circle):hover::before,
+.field.x .board.curr .cell:not(.x):not(.circle):hover::after {
+    height: calc(var(--cell-size)*.9);
+    width: calc(var(--cell-size)*.15);
+}
+.taken.x::before, 
+.taken.x::after  {
+    height: calc(var(--board-size)*.9);
+    width: calc(var(--board-size)*.15);
+}
+.board:not(.taken):not(.draw) .cell.x::before,
+.board:not(.taken):not(.draw) .cell.x::after,
+.field.x .board.curr .cell:not(.x):not(.circle):hover::before,
+.field.x .board.curr .cell:not(.x):not(.circle):hover::after,
+.taken.x::before, 
+.taken.x::after {
+    content: '';
+    position: absolute;
+    background-color: #f00;
+}
+.board:not(.taken):not(.draw) .cell.x::after,
+.field.x .board.curr .cell:not(.x):not(.circle):hover::after,
+.taken.x::after {
+    transform: rotate(-45deg);
+}
+.board:not(.taken):not(.draw) .cell.x::before,
+.field.x .board.curr .cell:not(.x):not(.circle):hover::before,
+.taken.x::before {
+    transform: rotate(45deg);
+}
+.board:not(.taken):not(.draw) .cell.circle::before,
+.board:not(.taken):not(.draw) .cell.circle::after,
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::before,
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::after,
+.taken.circle::before,
+.taken.circle::after{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+.board:not(.taken):not(.draw) .cell.circle::before,
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::before,
+.taken.taken.circle::before{
+    background-color: #00f;
+}
+
+.taken.taken.circle::before {
+    height: calc(var(--board-size)*.9);
+    width: calc(var(--board-size)*.9);
+}
+.board:not(.taken):not(.draw) .cell.circle::before,
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::before{
+    height: calc(var(--cell-size)*.9);
+    width: calc(var(--cell-size)*.9);
+}
+.board:not(.taken):not(.draw) .cell.circle::after,
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::after,
+.taken.circle::after {
+    background-color: #000;
+}
+
+.board:not(.taken):not(.draw) .cell.circle:after,
+.taken.circle::after {
+    height: calc(var(--board-size)*.7);
+    width: calc(var(--board-size)*.7);
+}
+
+.board:not(.taken):not(.draw) .cell.circle::after,
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::after{
+    height: calc(var(--cell-size)*.7);
+    width: calc(var(--cell-size)*.7);
+}
+
+
+.field.x .board.curr .cell:not(.x):not(.circle):hover::before,
+.field.x .board.curr .cell:not(.x):not(.circle):hover::after,
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::before {
+    opacity: .7;
+}
+
+.draw .cell {
+    opacity: 0;
+}
+
+.board.curr {
+    border: 5px solid rgba(255, 248, 114, 0.7) !important;
+}
+.winning-message, .start-menu {
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.9);
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+}
+
+.winning-message.hide,
+.start-menu.hide {
+    display: none;
+}
+.start-menu button,
+.winning-message button {
+    font-size: 3rem;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: .25em .5em;
+    cursor: pointer;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+.start-menu button:hover,
+.winning-message button:hover{
+    background-color: #000;
+    color: #fff;
+    border-color: #fff
+}
+
+.board.curr .cell:not(.x):not(.circle):hover {
+    cursor: pointer;
+}
+
+.board:not(.curr),
+.cell.x, .cell.circle {
+    cursor: not-allowed;
+}
+
+.start-menu.show,
+.winning-message.show  {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+}
+
+.audio-button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: #fff;
+    border-radius:50%;
+    align-items: center;
+    justify-content: center;
+    
+}
+.audio-button img {
+    height: 30px;
+    width: 30px;
+}
+.audio-button:hover {
+    cursor: pointer;
+}
