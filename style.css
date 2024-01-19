@@ -3,7 +3,7 @@
 }
 
 :root {
-    --board-size: 250px;
+    --board-size: 16vW;
     --cell-size: calc(var(--board-size)*.3);
 }
 
