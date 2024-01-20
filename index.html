@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="author" content="Alessandro Ribecco">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Super Tic Tac Toe created for fun">
+    <meta name="keywords" content="tic tac toe, game, fun, free">
     <title>Trissquared</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
+    <header>
+    </header>
     <div class="start-menu show" id="startMenu">
+       <div class="container">
         <div>TRISSQUARED</div>
-        <button id="startButton" onclick="startGame()">Start Game</button>
+        <div class="subtitle"> - by Alessandro Ribecco</div>
+        </div> 
+
+
+        <button type="submit" title="startGame" id="startButton" onclick="startGame()">Start Game</button>
         <audio loop muted id="playAudio">
             <source src="./audio/play.mp3" type="audio/mp3">
         </audio>
@@ -118,8 +128,8 @@
     </div>
     <div class="winning-message hide" id="winningMessage">
         <div data-winning-message-text></div>
-        <button id="restartButton" onclick="window.location.reload();">Main Menu</button>
+        <button type="submit" id="restartButton" onclick="window.location.reload();">Main Menu</button>
     </div>
-    <button class="audio-button" onclick="muteAudio();" id="audioButton"><img id="audioButtonImg" src="./img/mute.png"></button>
+    <button type="submit" title="returnHome" class="audio-button" onclick="muteAudio();" id="audioButton"><img id="audioButtonImg" src="./img/mute.png" alt="audio"></button>
 </body>
 </html>
