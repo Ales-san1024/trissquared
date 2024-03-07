@@ -19,11 +19,36 @@
         <div class="subtitle"> - by Alessandro Ribecco</div>
         </div> 
 
+        <div class="container">
+            <button type="submit" title="startGame" id="startButton" onclick="startGame()">Start</button>
+            <button type="submit" title="rules" id="rulesButton" onclick="rules()">Rules</button>
+        </div>
 
-        <button type="submit" title="startGame" id="startButton" onclick="startGame()">Start Game</button>
         <audio loop muted id="playAudio">
             <source src="./audio/play.mp3" type="audio/mp3">
         </audio>
+    </div>
+    <div class="rulebox show" id="rules">
+        <div>RULES</div>
+        <div>
+        <span class="ruletext red">!This game is made to be played on the same screen.</span><br>
+        <ul class="subtitle"><b>Keywords</b>
+          <li class="ruletext">BigBoard/Field => The big field, the one that contains the 9 tic tac toe fields</li>
+          <li class="ruletext">Board => One of the tic tac toe inside a square of the BigBoard</li>
+          <li class="ruletext">Square => One of the nine cells of a basic tic tac toe</li>
+        </ul>
+        <ul class="subtitle"><b>How to Play</b>
+          <li class="ruletext">The first player to play is 'x' and can play anywhere.</li>
+          <li class="ruletext">After a player move, the next player can only play in the board corrisponding to the Square where the last player put his/her sign.</li>
+          <li class="ruletext">However if the last move would send the other player to an already won Board, or to a Board ended-up in a draw, the other player can play anywhere.</li>
+          <li class="ruletext">Whenever a player has 3 signs lined inside a Board, he wins it.</li>
+          <li class="ruletext">If a Boards ends-up in a draw, the Board is lost, noone can win it.</li>
+          <li class="ruletext">The first player who wins 3 Boards on the same line, wins.</li>
+        </ul>
+        </div>
+        
+
+        <button type="submit" title="close" onclick="closeRules()" id="closeRulesButton">X</button>
     </div>
     <div class="field x" id="field">
         <div id="board1"class="board" data-board>
@@ -130,6 +155,7 @@
         <div data-winning-message-text></div>
         <button type="submit" id="restartButton" onclick="window.location.reload();">Main Menu</button>
     </div>
+
     <button type="submit" title="returnHome" class="audio-button" onclick="muteAudio();" id="audioButton"><img id="audioButtonImg" src="./img/mute.png" alt="audio"></button>
 </body>
 </html>

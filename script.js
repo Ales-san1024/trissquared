@@ -50,17 +50,20 @@ function move(e) {
         cell.classList.add(turnPlayer);
         updatePosition();
         console.log(position);
-    
+        const newCurrBoard=[...cellElements].indexOf(cell)%9;
         if (checkForTake([...currCells],turnPlayer)) {
             currBoard.classList.add('taken',turnPlayer);
+            currBoard.classList.remove('curr');
         }
         else {
             if (checkForDraw([...currCells])){
                 currBoard.classList.add('draw');
+                currBoard.classList.remove('curr');
             }
         }
 
-        if (checkWin(turnPlayer)) { const winText=document.querySelector('[data-winning-message-text]')
+        if (checkWin(turnPlayer)) {
+            const winText=document.querySelector('[data-winning-message-text]')
             winText.textContent = `${turnX ? "X's" : "O's"} wins!`
             switchView(true,'winningMessage');
             muteAudio();
@@ -72,7 +75,7 @@ function move(e) {
             muteAudio();
             return 0;
         }
-const newCurrBoard=[...cellElements].indexOf(cell)%9;
+
         if (!boards[newCurrBoard].classList.contains('taken') && !boards[newCurrBoard].classList.contains('draw')) {
             boards.forEach(board => board.classList.remove('curr'));
             boards[newCurrBoard].classList.add('curr');
@@ -164,4 +167,14 @@ function muteAudio() {
     document.getElementById('audioButtonImg').setAttribute('src',document.getElementById('audioButtonImg').src.includes('play.png') ? './img/mute.png' : './img/play.png');
     document.getElementById('playAudio').muted=document.getElementById('audioButtonImg').src.includes('play.png') ? false : true;
     
+}
+
+function closeRules() {
+    document.getElementById('rules').classList.add('hide');
+    document.getElementById('rules').classList.remove('show');
+}
+
+function rules() {
+    document.getElementById('rules').classList.add('show');
+    document.getElementById('rules').classList.remove('hide');
 }

@@ -176,7 +176,7 @@ body {
 .board.curr {
     border: 5px solid rgba(255, 248, 114, 0.7) !important;
 }
-.winning-message, .start-menu {
+.winning-message, .start-menu, .rulebox {
     position: fixed;
     top:0;
     left: 0;
@@ -189,7 +189,7 @@ body {
     text-align: center;
     font-size: calc(12px + 7.5vw);
 }
-
+.rulebox.hide,
 .winning-message.hide,
 .start-menu.hide {
     display: none;
@@ -205,12 +205,13 @@ body {
     text-align: center;
     align-items: center;
     align-content: center;
+    width: 20vw;
 }
 .start-menu button:hover,
 .winning-message button:hover{
     background-color: #000;
     color: #fff;
-    border-color: #fff
+    border-color: #fff;
 }
 
 .board.curr .cell:not(.x):not(.circle):hover {
@@ -221,7 +222,7 @@ body {
 .cell.x, .cell.circle {
     cursor: not-allowed;
 }
-
+.rulebox.show,
 .start-menu.show,
 .winning-message.show  {
     display: grid;
@@ -247,5 +248,32 @@ body {
 }
 
 .subtitle {
+    font-size: 5vh;
+    align-self: center;
+    
+}
+
+.rulebox.show {
+    z-index: 2;
+}
+.rulebox button {
+    color: #fff;
+    background-color: rgb(0,0,0);
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
     font-size: 3vh;
+}
+
+.ruletext {
+  font-size: 3.5vh;
+  justify-content: left;
+  align-items: left;
+  text-align: left; 
+}
+.rulebox {
+  padding-bottom: 30%
+}
+.red {
+  color:#f00;
 }
