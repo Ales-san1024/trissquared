@@ -60,8 +60,7 @@ function move(e) {
             }
         }
 
-        if (checkWin(turnPlayer)) {
-            const winText=document.querySelector('[data-winning-message-text]')
+        if (checkWin(turnPlayer)) { winText=document.querySelector('[data-winning-message-text]')
             winText.textContent = `${turnX ? "X's" : "O's"} wins!`
             switchView(true,'winningMessage');
             muteAudio();
@@ -73,7 +72,7 @@ function move(e) {
             muteAudio();
             return 0;
         }
-newCurrBoard=[...cellElements].indexOf(cell)%9;
+const newCurrBoard=[...cellElements].indexOf(cell)%9;
         if (!boards[newCurrBoard].classList.contains('taken') && !boards[newCurrBoard].classList.contains('draw')) {
             boards.forEach(board => board.classList.remove('curr'));
             boards[newCurrBoard].classList.add('curr');
