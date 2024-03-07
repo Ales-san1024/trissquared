@@ -67,14 +67,14 @@ function move(e) {
             const winText=document.querySelector('[data-winning-message-text]')
             winText.textContent = `${turnX ? "X's" : "O's"} wins!`
             switchView(true,'winningMessage');
-            if (!gameAudio.paused) 
+            if (!gameAudio.muted) 
               muteAudio();
         }
         else if (endDrawGame()) {
             const winText=document.querySelector('[data-winning-message-text]')
             winText.textContent = `Draw!`
             switchView(true,'winningMessage');
-            if (!gameAudio.paused) 
+            if (!gameAudio.muted) 
               muteAudio();
             return 0;
         }
