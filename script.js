@@ -50,7 +50,7 @@ function move(e) {
         cell.classList.add(turnPlayer);
         updatePosition();
         console.log(position);
-        const newCurrBoard=[...cellElements].indexOf(cell)%9;
+        const 
         if (checkForTake([...currCells],turnPlayer)) {
             currBoard.classList.add('taken',turnPlayer);
         }
@@ -73,7 +73,7 @@ function move(e) {
             muteAudio();
             return 0;
         }
-
+newCurrBoard=[...cellElements].indexOf(cell)%9;
         if (!boards[newCurrBoard].classList.contains('taken') && !boards[newCurrBoard].classList.contains('draw')) {
             boards.forEach(board => board.classList.remove('curr'));
             boards[newCurrBoard].classList.add('curr');
