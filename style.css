@@ -272,7 +272,8 @@ body {
   text-align: left; 
 }
 .rulebox {
-  padding-bottom: 30%
+  padding-bottom: 30%;
+  overflow-x: auto;
 }
 .red {
   color:#f00;
