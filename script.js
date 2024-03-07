@@ -50,7 +50,7 @@ function move(e) {
         cell.classList.add(turnPlayer);
         updatePosition();
         console.log(position);
-        const 
+    
         if (checkForTake([...currCells],turnPlayer)) {
             currBoard.classList.add('taken',turnPlayer);
         }
@@ -60,7 +60,7 @@ function move(e) {
             }
         }
 
-        if (checkWin(turnPlayer)) { winText=document.querySelector('[data-winning-message-text]')
+        if (checkWin(turnPlayer)) { const winText=document.querySelector('[data-winning-message-text]')
             winText.textContent = `${turnX ? "X's" : "O's"} wins!`
             switchView(true,'winningMessage');
             muteAudio();
