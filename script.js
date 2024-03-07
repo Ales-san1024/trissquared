@@ -1,5 +1,6 @@
 const X_CLASS='x';
 const O_CLASS='circle';
+const gameAudio=document.getElementById('playAudio');
 
 const winningCombos=[
     [0,1,2],[3,4,5],[6,7,8],
@@ -66,13 +67,15 @@ function move(e) {
             const winText=document.querySelector('[data-winning-message-text]')
             winText.textContent = `${turnX ? "X's" : "O's"} wins!`
             switchView(true,'winningMessage');
-            muteAudio();
+            if (!gameAudio.paused) 
+              muteAudio();
         }
         else if (endDrawGame()) {
             const winText=document.querySelector('[data-winning-message-text]')
             winText.textContent = `Draw!`
             switchView(true,'winningMessage');
-            muteAudio();
+            if (!gameAudio.paused) 
+              muteAudio();
             return 0;
         }
 
@@ -160,12 +163,12 @@ function startGame() {
         cell.classList.remove('x','circle')
         cell.addEventListener('click', move);
     })
-    document.getElementById('playAudio').play();
+    gameAudio.play();
 }
 
 function muteAudio() {
     document.getElementById('audioButtonImg').setAttribute('src',document.getElementById('audioButtonImg').src.includes('play.png') ? './img/mute.png' : './img/play.png');
-    document.getElementById('playAudio').muted=document.getElementById('audioButtonImg').src.includes('play.png') ? false : true;
+    gameAudio.muted=document.getElementById('audioButtonImg').src.includes('play.png') ? false : true;
     
 }
 
