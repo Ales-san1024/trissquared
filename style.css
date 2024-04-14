@@ -1,58 +1,62 @@
-*,*::after,*::before {
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 :root {
-    --board-size: 16vW;
-    --cell-size: calc(var(--board-size)*.3);
-    --min-board-size: 100px;
-    --min-cell-size: 30px;
+  --board-size: 16vw;
+  --cell-size: calc(var(--board-size) * 0.3);
+  --min-board-size: 100px;
+  --min-cell-size: 30px;
 }
 
 body {
-    margin: 0;
-    background: #000;
+  margin: 0;
+  background: #000;
 }
 .field {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
 }
-.field,.board,.cell {
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-        
+.field,
+.board,
+.cell {
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
 }
-.field, .board {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
+.field,
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
 }
 
 .board {
-    padding: calc(var(--board-size)*.05);
-    height: var(--board-size);
-    width: var(--board-size);
-    min-width: var(--min-board-size);
-    min-height: var(--min-board-size);
+  padding: calc(var(--board-size) * 0.05);
+  height: var(--board-size);
+  width: var(--board-size);
+  min-width: var(--min-board-size);
+  min-height: var(--min-board-size);
 }
 
 .cell {
-    height: var(--cell-size);
-    width: var(--cell-size);
-    align-items: center;
-    display: flex;
-    min-width: var(--min-cell-size);
-    min-height: var(--min-cell-size);
-
+  height: var(--cell-size);
+  width: var(--cell-size);
+  align-items: center;
+  display: flex;
+  min-width: var(--min-cell-size);
+  min-height: var(--min-cell-size);
 }
 
-.board, .cell {
-    border: 1px solid #fff;
+.board,
+.cell {
+  border: 1px solid #fff;
 }
 
 .board:first-child,
@@ -61,7 +65,7 @@ body {
 .cell:first-child,
 .cell:nth-child(2),
 .cell:nth-child(3) {
-    border-top: none;
+  border-top: none;
 }
 
 .board:last-child,
@@ -70,211 +74,217 @@ body {
 .cell:last-child,
 .cell:nth-child(7),
 .cell:nth-child(8) {
-    border-bottom: none;
+  border-bottom: none;
 }
 
-.board:nth-child(3n+1),
-.cell:nth-child(3n+1) {
-    border-left: none;
+.board:nth-child(3n + 1),
+.cell:nth-child(3n + 1) {
+  border-left: none;
 }
 
 .board:nth-child(3n),
 .cell:nth-child(3n) {
-    border-right: none;
+  border-right: none;
 }
 
 .taken .cell {
-    border:#fff;
+  border: #fff;
 }
 
 .cell.x::before,
 .cell.x::after,
 .field.x .board.curr .cell:not(.x):not(.circle):hover::before,
 .field.x .board.curr .cell:not(.x):not(.circle):hover::after {
-    height: calc(var(--cell-size)*.9);
-    width: calc(var(--cell-size)*.15);
+  height: calc(var(--cell-size) * 0.9);
+  width: calc(var(--cell-size) * 0.15);
 }
-.taken.x::before, 
-.taken.x::after  {
-    height: calc(var(--board-size)*.9);
-    width: calc(var(--board-size)*.15);
+.taken.x::before,
+.taken.x::after {
+  height: calc(var(--board-size) * 0.9);
+  width: calc(var(--board-size) * 0.15);
 }
 .board:not(.taken):not(.draw) .cell.x::before,
 .board:not(.taken):not(.draw) .cell.x::after,
 .field.x .board.curr .cell:not(.x):not(.circle):hover::before,
 .field.x .board.curr .cell:not(.x):not(.circle):hover::after,
-.taken.x::before, 
+.taken.x::before,
 .taken.x::after {
-    content: '';
-    position: absolute;
-    background-color: #f00;
+  content: "";
+  position: absolute;
+  background-color: #f00;
 }
 .board:not(.taken):not(.draw) .cell.x::after,
 .field.x .board.curr .cell:not(.x):not(.circle):hover::after,
 .taken.x::after {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 .board:not(.taken):not(.draw) .cell.x::before,
 .field.x .board.curr .cell:not(.x):not(.circle):hover::before,
 .taken.x::before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .board:not(.taken):not(.draw) .cell.circle::before,
 .board:not(.taken):not(.draw) .cell.circle::after,
 .field.circle .board.curr .cell:not(.x):not(.circle):hover::before,
 .field.circle .board.curr .cell:not(.x):not(.circle):hover::after,
 .taken.circle::before,
-.taken.circle::after{
-    content: "";
-    position: absolute;
-    border-radius: 50%;
+.taken.circle::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
 }
 .board:not(.taken):not(.draw) .cell.circle::before,
 .field.circle .board.curr .cell:not(.x):not(.circle):hover::before,
-.taken.taken.circle::before{
-    background-color: #00f;
+.taken.taken.circle::before {
+  background-color: #00f;
 }
 
 .taken.taken.circle::before {
-    height: calc(var(--board-size)*.9);
-    width: calc(var(--board-size)*.9);
+  height: calc(var(--board-size) * 0.9);
+  width: calc(var(--board-size) * 0.9);
 }
 .board:not(.taken):not(.draw) .cell.circle::before,
-.field.circle .board.curr .cell:not(.x):not(.circle):hover::before{
-    height: calc(var(--cell-size)*.9);
-    width: calc(var(--cell-size)*.9);
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::before {
+  height: calc(var(--cell-size) * 0.9);
+  width: calc(var(--cell-size) * 0.9);
 }
 .board:not(.taken):not(.draw) .cell.circle::after,
 .field.circle .board.curr .cell:not(.x):not(.circle):hover::after,
 .taken.circle::after {
-    background-color: #000;
+  background-color: #000;
 }
 
 .board:not(.taken):not(.draw) .cell.circle:after,
 .taken.circle::after {
-    height: calc(var(--board-size)*.7);
-    width: calc(var(--board-size)*.7);
+  height: calc(var(--board-size) * 0.7);
+  width: calc(var(--board-size) * 0.7);
 }
 
 .board:not(.taken):not(.draw) .cell.circle::after,
-.field.circle .board.curr .cell:not(.x):not(.circle):hover::after{
-    height: calc(var(--cell-size)*.7);
-    width: calc(var(--cell-size)*.7);
+.field.circle .board.curr .cell:not(.x):not(.circle):hover::after {
+  height: calc(var(--cell-size) * 0.7);
+  width: calc(var(--cell-size) * 0.7);
 }
-
 
 .field.x .board.curr .cell:not(.x):not(.circle):hover::before,
 .field.x .board.curr .cell:not(.x):not(.circle):hover::after,
 .field.circle .board.curr .cell:not(.x):not(.circle):hover::before {
-    opacity: .7;
+  opacity: 0.7;
 }
 
 .draw .cell {
-    opacity: 0;
+  opacity: 0;
 }
 
 .board.curr {
-    border: 5px solid rgba(255, 248, 114, 0.7) !important;
+  border: 5px solid rgba(255, 248, 114, 0.7) !important;
 }
-.winning-message, .start-menu, .rulebox {
-    position: fixed;
-    top:0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,.9);
-    color: #fff;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: calc(12px + 7.5vw);
+.winning-message,
+.start-menu,
+.rulebox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: calc(12px + 7.5vw);
 }
 .rulebox.hide,
 .winning-message.hide,
 .start-menu.hide {
-    display: none;
+  display: none;
 }
 .start-menu button,
 .winning-message button {
-    font-size: calc(8px + 5vw);
-    background-color: #fff;
-    border: 1px solid #000;
-    padding: .25em .5em;
-    cursor: pointer;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    align-content: center;
-    width: 20vw;
+  font-size: calc(8px + 5vw);
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  width: 20vw;
 }
 .start-menu button:hover,
-.winning-message button:hover{
-    background-color: #000;
-    color: #fff;
-    border-color: #fff;
+.winning-message button:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #fff;
 }
 
 .board.curr .cell:not(.x):not(.circle):hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .board:not(.curr),
-.cell.x, .cell.circle {
-    cursor: not-allowed;
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
 }
 .rulebox.show,
 .start-menu.show,
-.winning-message.show  {
-    display: grid;
-    grid-template-columns: repeat(1, auto);
+.winning-message.show {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
 }
 
 .audio-button {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    background-color: #fff;
-    border-radius:50%;
-    align-items: center;
-    justify-content: center;
-    
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
 }
 .audio-button img {
-    height: 30px;
-    width: 30px;
+  height: 30px;
+  width: 30px;
 }
 .audio-button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .subtitle {
-    font-size: 5vh;
-    align-self: center;
-    
+  font-size: 5vh;
+  align-self: center;
 }
 
 .rulebox.show {
-    z-index: 2;
+  z-index: 2;
 }
 .rulebox button {
-    color: #fff;
-    background-color: rgb(0,0,0);
-    position: absolute;
-    top: 1vh;
-    right: 1vw;
-    font-size: 3vh;
+  color: #fff;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  top: 1vh;
+  right: 1vw;
+  font-size: 3vh;
 }
 
 .ruletext {
   font-size: 3.5vh;
   justify-content: left;
   align-items: left;
-  text-align: left; 
+  text-align: left;
 }
 .rulebox {
   padding-bottom: 30%;
   overflow-x: auto;
 }
 .red {
-  color:#f00;
+  color: #f00;
 }
+.board:not(.taken):not(.draw) .cell.circle.lastmove::after,
+.cell.lastmove {
+  background-color: rgba(255, 248, 114, 0.7);
+}
+
+
