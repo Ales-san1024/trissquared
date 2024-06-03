@@ -1,161 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Alessandro Ribecco">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Super Tic Tac Toe created for fun">
-    <meta name="keywords" content="tic tac toe, game, fun, free">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alessandro Ribecco" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Super Tic Tac Toe created for fun" />
+    <meta name="keywords" content="tic tac toe, game, fun, free" />
+    <link rel="icon" href="./favicon.ico" />
     <title>Trissquared</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
-    <header>
-    </header>
+  </head>
+  <body>
+    <header></header>
     <div class="start-menu show" id="startMenu">
-       <div class="container">
+      <div class="container">
         <div>TRISSQUARED</div>
-        <div class="subtitle"> - by Alessandro Ribecco</div>
-        </div> 
+        <div class="subtitle">- by Alessandro Ribecco</div>
+      </div>
 
-        <div class="container">
-            <button type="submit" title="startGame" id="startButton" onclick="startGame()">Start</button>
-            <button type="submit" title="rules" id="rulesButton" onclick="rules()">Rules</button>
-        </div>
+      <div class="container">
+        <button
+          type="submit"
+          title="startGame"
+          id="startButton"
+          onclick="startGame()"
+        >
+          Start
+        </button>
+        <button type="submit" title="rules" id="rulesButton" onclick="rules()">
+          Rules
+        </button>
+      </div>
 
-        <audio loop muted id="playAudio">
-            <source src="./audio/play.mp3" type="audio/mp3">
-        </audio>
+      <audio loop muted id="playAudio">
+        <source src="./audio/play.mp3" type="audio/mp3" />
+      </audio>
     </div>
     <div class="rulebox hide" id="rules">
-        <div>RULES</div>
-        <div>
-        <span class="ruletext red">!This game is made to be played on the same screen.</span><br>
-        <ul class="subtitle"><b>Keywords</b>
-          <li class="ruletext">BigBoard/Field => The big field, the one that contains the 9 tic tac toe fields</li>
-          <li class="ruletext">Board => One of the tic tac toe inside a square of the BigBoard</li>
-          <li class="ruletext">Square => One of the nine cells of a basic tic tac toe</li>
+      <div>RULES</div>
+      <div>
+        <span class="ruletext red"
+          >!This game is made to be played on the same screen.</span
+        ><br />
+        <ul class="subtitle">
+          <b>Keywords</b>
+          <li class="ruletext">
+            BigBoard/Field => The big field, the one that contains the 9 tic tac
+            toe fields
+          </li>
+          <li class="ruletext">
+            Board => One of the tic tac toe inside a square of the BigBoard
+          </li>
+          <li class="ruletext">
+            Square => One of the nine cells of a basic tic tac toe
+          </li>
         </ul>
-        <ul class="subtitle"><b>How to Play</b>
-          <li class="ruletext">The first player to play is 'x' and can play anywhere.</li>
-          <li class="ruletext">After a player move, the next player can only play in the board corrisponding to the Square where the last player put his/her sign.</li>
-          <li class="ruletext">However if the last move would send the other player to an already won Board, or to a Board ended-up in a draw, the other player can play anywhere.</li>
-          <li class="ruletext">Whenever a player has 3 signs lined inside a Board, he wins it.</li>
-          <li class="ruletext">If a Boards ends-up in a draw, the Board is lost, noone can win it.</li>
-          <li class="ruletext">The first player who wins 3 Boards on the same line, wins.</li>
+        <ul class="subtitle">
+          <b>How to Play</b>
+          <li class="ruletext">
+            The first player to play is 'x' and can play anywhere.
+          </li>
+          <li class="ruletext">
+            After a player move, the next player can only play in the board
+            corrisponding to the Square where the last player put his/her sign.
+          </li>
+          <li class="ruletext">
+            However if the last move would send the other player to an already
+            won Board, or to a Board ended-up in a draw, the other player can
+            play anywhere.
+          </li>
+          <li class="ruletext">
+            Whenever a player has 3 signs lined inside a Board, he wins it.
+          </li>
+          <li class="ruletext">
+            If a Boards ends-up in a draw, the Board is lost, noone can win it.
+          </li>
+          <li class="ruletext">
+            The first player who wins 3 Boards on the same line, wins.
+          </li>
         </ul>
-        </div>
-        
+      </div>
 
-        <button type="submit" title="close" onclick="closeRules()" id="closeRulesButton">X</button>
+      <button
+        type="submit"
+        title="close"
+        onclick="closeRules()"
+        id="closeRulesButton"
+      >
+        X
+      </button>
     </div>
     <div class="field x" id="field">
-        <div id="board1"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
-        <div id="board2"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
-        <div id="board3"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
-        <div id="board4"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
-        <div id="board5"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
-        <div id="board6"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
-        <div id="board7"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
-        <div id="board8"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
-        <div id="board9"class="board" data-board>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-        </div>
+      <div id="board1" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <div id="board2" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <div id="board3" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <div id="board4" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <div id="board5" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <div id="board6" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <div id="board7" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <div id="board8" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <div id="board9" class="board" data-board>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
     </div>
     <div class="winning-message hide" id="winningMessage">
-        <div data-winning-message-text></div>
-        <button type="submit" id="restartButton" onclick="window.location.reload();">Main Menu</button>
+      <div data-winning-message-text></div>
+      <button
+        type="submit"
+        id="restartButton"
+        onclick="window.location.reload();"
+      >
+        Main Menu
+      </button>
     </div>
 
-    <button type="submit" title="returnHome" class="audio-button" onclick="muteAudio();" id="audioButton"><img id="audioButtonImg" src="./img/mute.png" alt="audio"></button>
-</body>
+    <button
+      type="submit"
+      title="returnHome"
+      class="audio-button"
+      onclick="muteAudio();"
+      id="audioButton"
+    >
+      <img id="audioButtonImg" src="./img/mute.png" alt="audio" />
+    </button>
+  </body>
 </html>
